@@ -33,13 +33,12 @@ namespace GrafikRayLib
                 {
                     y += 0.1f;
                 }
-                
 
                 Raylib.BeginDrawing();
 
                 Raylib.ClearBackground(myColor);
 
-                Raylib.DrawRectangle((int)x, (int)y, 20, 30, Color.RED);
+                Raylib.DrawCircle((int)x, (int)y, 20f, Color.BLUE);
 
                 Raylib.EndDrawing();
             }
