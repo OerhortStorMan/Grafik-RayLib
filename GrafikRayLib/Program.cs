@@ -13,8 +13,11 @@ namespace GrafikRayLib
 
             float x = 0;
             float y = 0;
-            float w = 0;
-            float h = 0;
+
+            float enemyX = 0;
+            float enemyY = 0;
+
+            bool enemyHitWall = false;
             //Så länge fönstret inte ska stängas; fortsätt while
             while(!Raylib.WindowShouldClose())
             {
@@ -36,28 +39,40 @@ namespace GrafikRayLib
                     y += 0.1f;
                 }
 
+                if (enemyX == 0)
+                {
+                    enemyHitWall = false;
+                    enemyX++;
 
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_Q))
-                {
-                    w += 0.1f;
-                    h += 0.1f;
                 }
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_E))
+
+                if (enemyHitWall == false)
                 {
-                    w -= 0.1f;
-                    h -= 0.1f;
+                    enemyX++;
                 }
+
+                if (enemyX == 760)
+                {
+                    enemyHitWall = true;
+                }
+
+
+                if (enemyHitWall == true)
+                {
+                    enemyX--;
+
+                }
+                
+
+
 
                 Raylib.BeginDrawing();
 
                 Raylib.ClearBackground(myColor);
 
-                Raylib.DrawRectangle((int)x, (int)y, (int)w, (int)h, Color.BLUE);
+                Raylib.DrawRectangle((int)x, (int)y, 10, 10, Color.BLUE);
 
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE))
-                {
-                    Raylib.DrawCircle((int)x, (int)y, ((int)w*1.5f), Color.RED);    
-                }
+                Raylib.DrawRectangle((int)enemyX, (int)enemyY, 40, 40, Color.RED);
 
                 Raylib.EndDrawing();
             }
