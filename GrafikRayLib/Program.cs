@@ -13,32 +13,51 @@ namespace GrafikRayLib
 
             float x = 0;
             float y = 0;
+            float w = 0;
+            float h = 0;
             //Så länge fönstret inte ska stängas; fortsätt while
             while(!Raylib.WindowShouldClose())
             {
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
                 {
                     x += 0.1f;
                 }
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
                 {
                     x -= 0.1f;
                 }
-
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+                
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 {
                     y -= 0.1f;
                 }
-                if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
                 {
                     y += 0.1f;
+                }
+
+
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_Q))
+                {
+                    w += 0.1f;
+                    h += 0.1f;
+                }
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_E))
+                {
+                    w -= 0.1f;
+                    h -= 0.1f;
                 }
 
                 Raylib.BeginDrawing();
 
                 Raylib.ClearBackground(myColor);
 
-                Raylib.DrawCircle((int)x, (int)y, 20f, Color.BLUE);
+                Raylib.DrawRectangle((int)x, (int)y, (int)w, (int)h, Color.BLUE);
+
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE))
+                {
+                    Raylib.DrawCircle((int)x, (int)y, ((int)w*1.5f), Color.RED);    
+                }
 
                 Raylib.EndDrawing();
             }
