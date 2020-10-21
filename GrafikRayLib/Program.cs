@@ -42,24 +42,26 @@ namespace GrafikRayLib
                 if (enemyX == 0)
                 {
                     enemyHitWall = false;
-                    enemyX++;
+                    enemyX = enemyX + 0.5f;
+                    enemyY = enemyY + 8;
 
                 }
 
                 if (enemyHitWall == false)
                 {
-                    enemyX++;
+                    enemyX = enemyX + 0.5f;
                 }
 
                 if (enemyX == 760)
                 {
                     enemyHitWall = true;
+                    enemyY = enemyY + 8;
                 }
 
 
                 if (enemyHitWall == true)
                 {
-                    enemyX--;
+                    enemyX = enemyX - 0.5f;
 
                 }
                 
